@@ -130,7 +130,7 @@ public class Main {
         Scanner scanner=new Scanner(System.in);
         System.out.println("enter a todo statement");
         String todo=scanner.nextLine();
-        toDoList[day].getToDos().add(todo);
+        toDoList[day].getToDos().add(new Todo(todo));
         System.out.println("todo statement successfully added");
         listMenu(toDoList,day);
     }
