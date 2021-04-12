@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+     System.out.println("welcome to the todolist app.choose an option");
 	List[] weekToDoList=new List[7];
 	weekToDoList[0]=new List("Saturday");
 	weekToDoList[1]=new List("Sunday");
@@ -11,7 +12,26 @@ public class Main {
 	weekToDoList[4]=new List("Wednesday");
 	weekToDoList[5]=new List("Thursday");
 	weekToDoList[6]=new List("Friday");
-	menu(weekToDoList);
+	Menu(weekToDoList);
+    }
+    public static void Menu(List[] toDoList){
+
+        System.out.println("1.Days");
+        System.out.println("2.show List");
+        System.out.println("3.Exit");
+        Collector(toDoList);
+    }
+    public static void Collector(List[] toDoList){
+        Scanner scanner=new Scanner(System.in);
+        int x=scanner.nextInt();
+        scanner.nextLine();
+        switch (x){
+            case 1:menu(toDoList);
+            break;
+            case 2:printWholeList(toDoList);
+            break;
+            case 3:break;
+        }
     }
     public static void menu(List[] toDoList){
         System.out.println("welcome to weekly to do list. choose a day");
@@ -46,54 +66,27 @@ public class Main {
         }
     }
     public static void Saturday(List[] toDoList){
-        System.out.println("welcome to saturdays sheet");
-        System.out.println("choose a title");
-        Scanner scanner=new Scanner(System.in);
-        String title=scanner.nextLine();
-        toDoList[0].setTitle(title);
         listMenu(toDoList,0);
     }
     public static void Sunday(List[] toDoList){
-        System.out.println("welcome to Sunday sheet");
-        System.out.println("choose a title");
-        Scanner scanner=new Scanner(System.in);
-        String title=scanner.nextLine();
-        toDoList[1].setTitle(title);
+
         listMenu(toDoList,1);
-    }public static void Monday(List[] toDoList){
-        System.out.println("welcome to Monday sheet");
-        System.out.println("choose a title");
-        Scanner scanner=new Scanner(System.in);
-        String title=scanner.nextLine();
-        toDoList[2].setTitle(title);
+    }
+    public static void Monday(List[] toDoList){
+
         listMenu(toDoList,2);
-    }public static void tuesday(List[] toDoList){
-        System.out.println("welcome to tuesday sheet");
-        System.out.println("choose a title");
-        Scanner scanner=new Scanner(System.in);
-        String title=scanner.nextLine();
-        toDoList[3].setTitle(title);
+    }
+    public static void tuesday(List[] toDoList){
         listMenu(toDoList,3);
-    }public static void wednesday(List[] toDoList){
-        System.out.println("welcome to wednesday sheet");
-        System.out.println("choose a title");
-        Scanner scanner=new Scanner(System.in);
-        String title=scanner.nextLine();
-        toDoList[4].setTitle(title);
+    }
+    public static void wednesday(List[] toDoList){
         listMenu(toDoList,4);
-    }public static void thursday(List[] toDoList){
-        System.out.println("welcome to thursday sheet");
-        System.out.println("choose a title");
-        Scanner scanner=new Scanner(System.in);
-        String title=scanner.nextLine();
-        toDoList[5].setTitle(title);
+    }
+    public static void thursday(List[] toDoList){
+
         listMenu(toDoList,5);
-    }public static void friday(List[] toDoList){
-        System.out.println("welcome to friday sheet");
-        System.out.println("choose a title");
-        Scanner scanner=new Scanner(System.in);
-        String title=scanner.nextLine();
-        toDoList[6].setTitle(title);
+    }
+    public static void friday(List[] toDoList){
         listMenu(toDoList,6);
     }
     public static void listMenu(List[] toDoList,int day){
@@ -103,7 +96,8 @@ public class Main {
         System.out.println("3.alter a todo statement");
         System.out.println("4.remove a todo statement");
         System.out.println("5.show todo list");
-        System.out.println("6.back to main menu");
+        System.out.println("6.choose Title");
+        System.out.println("7.back to main menu");
         listCollector(toDoList,day);
 
     }
@@ -122,7 +116,9 @@ public class Main {
             break;
             case 5:showToDoList(toDoList,day);
             break;
-            case 6:menu(toDoList);
+            case 6:setTitle(toDoList,day);
+            break;
+            case 7:Menu(toDoList);
             default:listMenu(toDoList,day);
         }
     }
@@ -166,5 +162,18 @@ public class Main {
     public static void showToDoList(List[] toDoList,int day){
         toDoList[day].printList();
         listMenu(toDoList,day);
+    }
+    public static void setTitle(List[] toDoList,int day){
+        System.out.println("enter your title");
+        Scanner scanner=new Scanner(System.in);
+        String title=scanner.nextLine();
+        toDoList[day].setTitle(title);
+        listMenu(toDoList,day);
+    }
+    public static void printWholeList(List[] toDoList){
+        for (int i=0;i<toDoList.length;i++){
+            toDoList[i].printList();
+        }
+        Menu(toDoList);
     }
 }

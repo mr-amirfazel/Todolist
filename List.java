@@ -17,6 +17,7 @@ public class List {
     public List(String day) {
         this.day = day;
         toDos=new ArrayList<>();
+        title=" ";
     }
 
     public String getTitle() {
@@ -35,7 +36,7 @@ public class List {
         this.toDos = toDos;
     }
     public void printList(){
-        System.out.println("day: "+day);
+        System.out.println(day+"'s sheet");
         System.out.println("TITLE :"+"\n"+getTitle()+"\n");
         int i=1;
         for (Todo note:toDos){
@@ -46,15 +47,10 @@ public class List {
     public void checkMark(int index){
         String string=toDos.get(index-1).getToDo()+"☑";
         toDos.get(index-1).setToDo(string);
-      //  toDos.remove(toDos.get(index-1));
-       // toDos.add(string);
-
-    }
+        toDos.get(index-1).setChecked(true);
+      }
     public void alter(int ind,String newtodo){
         toDos.get(ind-1).setToDo(newtodo);
-//        toDos.remove(toDos.get(ind-1));
-//        toDos.add(newtodo);
-
     }
 
 }
