@@ -45,7 +45,7 @@ public class List {
         }
     }
     public void checkMark(int index){
-        String string=toDos.get(index-1).getToDo()+"☑";
+        String string=toDos.get(index-1).getToDo()+"  ☑  ";
         toDos.get(index-1).setToDo(string);
         toDos.get(index-1).setChecked(true);
       }

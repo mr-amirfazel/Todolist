@@ -19,18 +19,17 @@ public class Main {
         System.out.println("1.Days");
         System.out.println("2.show List");
         System.out.println("3.Exit");
-        Collector(toDoList);
-    }
-    public static void Collector(List[] toDoList){
         Scanner scanner=new Scanner(System.in);
         int x=scanner.nextInt();
-        scanner.nextLine();
+        String nokhodi = scanner.nextLine();
         switch (x){
             case 1:menu(toDoList);
-            break;
+                break;
             case 2:printWholeList(toDoList);
-            break;
-            case 3:break;
+                break;
+            case 3:Exit();
+                break;
+            default:break;
         }
     }
     public static void menu(List[] toDoList){
@@ -42,27 +41,27 @@ public class Main {
         System.out.println("5.Wednesday");
         System.out.println("6.Thursday");
         System.out.println("7.Friday");
-        collector(toDoList);
-    }
-    public static void collector(List[] toDoList){
+        System.out.println("8.Main menu");
         Scanner scanner=new Scanner(System.in);
         int x=scanner.nextInt();
-        scanner.nextLine();
+        String nokhodi= scanner.nextLine();
         switch (x){
             case 1:Saturday(toDoList);
-            break;
+                break;
             case 2:Sunday(toDoList);
-            break;
+                break;
             case 3:Monday(toDoList);
-            break;
+                break;
             case 4:tuesday(toDoList);
-            break;
+                break;
             case 5:wednesday(toDoList);
-            break;
+                break;
             case 6:thursday(toDoList);
-            break;
+                break;
             case 7:friday(toDoList);
-            break;
+                break;
+            case 8:Menu(toDoList);
+                break;
         }
     }
     public static void Saturday(List[] toDoList){
@@ -98,36 +97,39 @@ public class Main {
         System.out.println("5.show todo list");
         System.out.println("6.choose Title");
         System.out.println("7.back to main menu");
-        listCollector(toDoList,day);
-
-    }
-    public static void listCollector(List[] toDoList,int day){
         Scanner scanner=new Scanner(System.in);
         int x=scanner.nextInt();
-        scanner.nextLine();
+       String nokhodi= scanner.nextLine();
         switch (x){
             case 1:addToList(toDoList,day);
-            break;
+                break;
             case 2:checkMark(toDoList,day);
-            break;
+                break;
             case 3:alter(toDoList,day);
-            break;
+                break;
             case 4:removeFromList(toDoList,day);
-            break;
+                break;
             case 5:showToDoList(toDoList,day);
-            break;
+                break;
             case 6:setTitle(toDoList,day);
-            break;
+                break;
             case 7:Menu(toDoList);
+            break;
             default:listMenu(toDoList,day);
         }
+
     }
     public static void addToList(List[] toDoList,int day){
         Scanner scanner=new Scanner(System.in);
         System.out.println("enter a todo statement");
+        System.out.println("enter finish to stop adding");
         String todo=scanner.nextLine();
-        toDoList[day].getToDos().add(new Todo(todo));
-        System.out.println("todo statement successfully added");
+        while(!todo.equals("finish")){
+            toDoList[day].getToDos().add(new Todo(todo));
+            System.out.println("-----todo statement successfully added-----");
+            todo=scanner.nextLine();
+        }
+
         listMenu(toDoList,day);
     }
     public static void checkMark(List[] toDoList,int day){
@@ -175,5 +177,9 @@ public class Main {
             toDoList[i].printList();
         }
         Menu(toDoList);
+    }
+    public  static void Exit(){
+        System.out.println("exited successfully");
+       // System.exit(1);
     }
 }
