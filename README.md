@@ -8,7 +8,7 @@ abilities:
 4.checkmark
 5.alter
 ------------------------------------
-new commit changes(2nd commit):
+## new commit changes(2nd commit):
 keeps the order of statements
 sent the title part to a member of list 
 and made a new class for statements
