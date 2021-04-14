@@ -44,10 +44,21 @@ public class List {
             i++;
         }
     }
+    public  void printUndone(){
+        System.out.println(day+"'s Undone Tasks: ");
+        int i=1;
+        for (Todo note:toDos ){
+            if(!note.isChecked){
+                System.out.println(i+")"+note.getToDo());
+                i++;
+            }
+
+        }
+    }
     public void checkMark(int index){
         String string=toDos.get(index-1).getToDo()+"  ☑  ";
         toDos.get(index-1).setToDo(string);
-        toDos.get(index-1).setChecked(true);
+        toDos.get(index-1).setChecked();
       }
     public void alter(int ind,String newtodo){
         toDos.get(ind-1).setToDo(newtodo);

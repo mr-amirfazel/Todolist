@@ -18,7 +18,8 @@ public class Main {
 
         System.out.println("1.Days");
         System.out.println("2.show List");
-        System.out.println("3.Exit");
+        System.out.println("3.show my Undone Tasks");
+        System.out.println("4.Exit");
         Scanner scanner=new Scanner(System.in);
         int x=scanner.nextInt();
         String nokhodi = scanner.nextLine();
@@ -27,7 +28,9 @@ public class Main {
                 break;
             case 2:printWholeList(toDoList);
                 break;
-            case 3:Exit();
+            case 3:printUndoneTasks(toDoList);
+            break;
+            case 4:Exit();
                 break;
             default:break;
         }
@@ -46,47 +49,23 @@ public class Main {
         int x=scanner.nextInt();
         String nokhodi= scanner.nextLine();
         switch (x){
-            case 1:Saturday(toDoList);
+            case 1:listMenu(toDoList,0);
                 break;
-            case 2:Sunday(toDoList);
+            case 2:listMenu(toDoList,1);
                 break;
-            case 3:Monday(toDoList);
+            case 3:listMenu(toDoList,2);
                 break;
-            case 4:tuesday(toDoList);
+            case 4:listMenu(toDoList,3);
                 break;
-            case 5:wednesday(toDoList);
+            case 5:listMenu(toDoList,4);
                 break;
-            case 6:thursday(toDoList);
+            case 6:listMenu(toDoList,5);
                 break;
-            case 7:friday(toDoList);
+            case 7:listMenu(toDoList,6);
                 break;
             case 8:Menu(toDoList);
                 break;
         }
-    }
-    public static void Saturday(List[] toDoList){
-        listMenu(toDoList,0);
-    }
-    public static void Sunday(List[] toDoList){
-
-        listMenu(toDoList,1);
-    }
-    public static void Monday(List[] toDoList){
-
-        listMenu(toDoList,2);
-    }
-    public static void tuesday(List[] toDoList){
-        listMenu(toDoList,3);
-    }
-    public static void wednesday(List[] toDoList){
-        listMenu(toDoList,4);
-    }
-    public static void thursday(List[] toDoList){
-
-        listMenu(toDoList,5);
-    }
-    public static void friday(List[] toDoList){
-        listMenu(toDoList,6);
     }
     public static void listMenu(List[] toDoList,int day){
         System.out.println("choose what you wanna do to the list");
@@ -96,7 +75,8 @@ public class Main {
         System.out.println("4.remove a todo statement");
         System.out.println("5.show todo list");
         System.out.println("6.choose Title");
-        System.out.println("7.back to main menu");
+        System.out.println("7.show undone Tasks");
+        System.out.println("8.back to main menu");
         Scanner scanner=new Scanner(System.in);
         int x=scanner.nextInt();
        String nokhodi= scanner.nextLine();
@@ -113,7 +93,9 @@ public class Main {
                 break;
             case 6:setTitle(toDoList,day);
                 break;
-            case 7:Menu(toDoList);
+            case 7:printUndoneTasks(toDoList,day);
+            break;
+            case 8:Menu(toDoList);
             break;
             default:listMenu(toDoList,day);
         }
@@ -176,6 +158,16 @@ public class Main {
         for (int i=0;i<toDoList.length;i++){
             toDoList[i].printList();
         }
+        Menu(toDoList);
+    }
+    public static void printUndoneTasks(List[] toDoList,int day){
+        toDoList[day].printUndone();
+        menu(toDoList);
+    }
+    public static void printUndoneTasks(List[] toDoList){
+       for(int i=0;i<7;i++){
+           toDoList[i].printUndone();
+       }
         Menu(toDoList);
     }
     public  static void Exit(){

@@ -19,7 +19,8 @@ public class Todo {
         return isChecked;
     }
 
-    public void setChecked(boolean checked) {
-        isChecked = checked;
+    public void setChecked() {
+        isChecked = true;
     }
+
 }
