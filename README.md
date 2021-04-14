@@ -7,6 +7,7 @@ abilities:
 3.show
 4.checkmark
 5.alter
+6.show undone todo's
 ------------------------------------
 ## new commit changes(2nd commit):
 keeps the order of statements
