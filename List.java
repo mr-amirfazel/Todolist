@@ -55,13 +55,43 @@ public class List {
 
         }
     }
+    public  void printdone(){
+        System.out.println(day+"'s done Tasks: ");
+        int i=1;
+        for (Todo note:toDos ){
+            if(note.isChecked){
+                System.out.println(i+")"+note.getToDo());
+                i++;
+            }
+
+        }
+    }
     public void checkMark(int index){
-        String string=toDos.get(index-1).getToDo()+"  ☑  ";
-        toDos.get(index-1).setToDo(string);
-        toDos.get(index-1).setChecked();
+        if((index>=1)&&(index<= toDos.size())) {
+            String string = toDos.get(index - 1).getToDo() + "  ☑  ";
+            toDos.get(index - 1).setToDo(string);
+            toDos.get(index - 1).setChecked();
+            System.out.println("statement check marked successfully");
+        }
+        else
+            System.out.println("the index doesnt exist");
       }
     public void alter(int ind,String newtodo){
-        toDos.get(ind-1).setToDo(newtodo);
+        if((ind>=1)&&(ind<= toDos.size())) {
+            if (toDos.get(ind - 1).isChecked)
+                newtodo = newtodo + " ☑ ";
+            toDos.get(ind - 1).setToDo(newtodo);
+            System.out.println("statement altered successfully");
+        }
+        else
+            System.out.println("the index doesnt exist");
+    }
+    public void remove(int index){
+        if((index>=1)&&(index<= toDos.size())) {
+           toDos.remove(index-1);
+        }
+        else
+         System.out.println("statement removed successfully");
     }
 
 }

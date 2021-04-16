@@ -19,7 +19,8 @@ public class Main {
         System.out.println("1.Days");
         System.out.println("2.show List");
         System.out.println("3.show my Undone Tasks");
-        System.out.println("4.Exit");
+        System.out.println("4.what Have I done so far?");
+        System.out.println("5.Exit");
         Scanner scanner=new Scanner(System.in);
         int x=scanner.nextInt();
         String nokhodi = scanner.nextLine();
@@ -30,7 +31,9 @@ public class Main {
                 break;
             case 3:printUndoneTasks(toDoList);
             break;
-            case 4:Exit();
+            case 4:doneTasks(toDoList);
+            break;
+            case 5:Exit();
                 break;
             default:break;
         }
@@ -120,7 +123,6 @@ public class Main {
         int index=scanner.nextInt();
         scanner.nextLine();
         toDoList[day].checkMark(index);
-        System.out.println("statement check marked successfully");
         listMenu(toDoList,day);
     }
     public static void alter(List[] toDoList,int day){
@@ -131,7 +133,6 @@ public class Main {
         System.out.println("enter the new statement");
         String todo=scanner.nextLine();
         toDoList[day].alter(index,todo);
-        System.out.println("statement altered successfully");
         listMenu(toDoList,day);
     }
     public static void removeFromList(List[] toDoList,int day){
@@ -139,8 +140,7 @@ public class Main {
         Scanner scanner=new Scanner(System.in);
         int index=scanner.nextInt();
         scanner.nextLine();
-        toDoList[day].getToDos().remove(index-1);
-        System.out.println("statement removed successfully");
+        toDoList[day].remove(index);
         listMenu(toDoList,day);
     }
     public static void showToDoList(List[] toDoList,int day){
@@ -162,12 +162,26 @@ public class Main {
     }
     public static void printUndoneTasks(List[] toDoList,int day){
         toDoList[day].printUndone();
-        menu(toDoList);
+        listMenu(toDoList,day);
     }
     public static void printUndoneTasks(List[] toDoList){
        for(int i=0;i<7;i++){
+           boolean hasUndoneTask=false;
+            for(int j=0;j<toDoList[i].getToDos().size();j++){
+                if(!toDoList[i].getToDos().get(j).isChecked){
+                    hasUndoneTask=true;
+                    break;
+                }
+            }
+            if(hasUndoneTask)
            toDoList[i].printUndone();
        }
+        Menu(toDoList);
+    }
+    public static void doneTasks(List[] toDoList){
+        for (int i=0;i<toDoList.length;i++){
+            toDoList[i].printdone();
+        }
         Menu(toDoList);
     }
     public  static void Exit(){
